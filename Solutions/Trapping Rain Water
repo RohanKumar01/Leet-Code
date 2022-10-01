@@ -10,40 +10,53 @@ Example 2:
 
 Input: height = [4,2,0,3,2,5]
 Output: 9
-       
-         //Solution 
-       
-        int sum=0;
+
+//Solution 
+
+class Solution {
+public:
+    int trap(vector<int>& height) {
+        
+         int sum=0;
         int n=height.size();
         
         vector<int> msl(n);
         vector<int>msr(n);
         vector<int>water(n);
             
-        //To calculate max element at left of each position 
-        msl[0]=height[0];   //initialising first element of msl as first element of height array.
-        for(int i=1; i<n; i++)   //starting form 1 since we already initialsed the first element i.e, 0th index
+       
+        
+        //To calculate max element at left of each position
+        
+        msl[0]=height[0]; //initialising first element of msl as first element of height array.
+        for(int i=1; i<n; i++) /*starting form 1 since we already initialsed the first element i.e, 0th index*/
         {
-            msl[i]=max(msl[i-1],height[i]);   
+            msl[i]=max(msl[i-1],height[i]);
+            
         }
          
         //To calculate max element at right of each position
+        
         msr[n-1]=height[n-1];
         for(int i= n-2; i>=0; i--)
         {
             msr[i]=max(msr[i+1],height[i]);
         }
         
-       //Now, we will calculate unit of water stored at each position
-	    for(int i=0; i<n; i++)
+        //Now, we will calculate unit of water stored at each position
+        for(int i=0; i<n; i++)
         {
             water[i]= min(msr[i],msl[i]) - height[i];
         }
         
         //finally, we will sum all the elements of water to get the final answer
-		   for(int i=0; i<n; i++)
+          for(int i=0; i<n; i++)
         {
             sum+=water[i];
         }
-		
+        
         return sum;
+    }
+};
+       
+        
