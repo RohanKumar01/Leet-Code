@@ -1,0 +1,46 @@
+class Solution {
+public:
+    vector<vector<int>>dp;
+	int longestIdealString(string s, int k) 
+	{
+       int idx=0;
+       char prev='{';
+       dp.resize(s.length()+1,vector<int>(27,-1));
+	   return fun(s,idx,k,prev);
+    }
+    int fun(string &str,int idx,int &k,char prev)
+    {
+    	if(idx>=str.length())
+    	{
+    		return 0;
+		}
+		if(dp[idx][prev-'a']!=-1)
+		{
+			return dp[idx][prev-'a'];
+		}
+        if(prev=='{')                     //
+        {
+        	int len=0;
+        	//can be taken 
+        	int choise1=len=1+fun(str,idx+1,k,str[idx]);
+        	//it cannot be taken by the choise
+        	int choise2=len=0+fun(str,idx+1,k,prev);
+        	
+        	return dp[idx][prev-'a'] = max(choise1,choise2);
+		}
+		else if(prev!='{')
+		{
+			if(abs(str[idx]-prev)<=k)
+			{
+				int choise1=1+fun(str,idx+1,k,str[idx]);
+				int choise2=0+fun(str,idx+1,k,prev);
+			    return dp[idx][prev-'a'] = max(choise1,choise2);
+			}
+			else if(abs(str[idx]-prev)>k)
+			{
+				return dp[idx][prev-'a'] = 0+fun(str,idx+1,k,prev);
+			}
+		}
+        return 0;
+	}
+};
