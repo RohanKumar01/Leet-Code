@@ -4,7 +4,7 @@
        vector<string>v(n,"");
        int idx=0;
        int counter=0;
-       bool flag=true;   //true->uper se neeche   
+       bool flag=true;     
        while(idx<s.length())
        {
           if(idx<s.length() and flag==true)
