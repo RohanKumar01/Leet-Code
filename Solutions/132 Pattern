@@ -13,11 +13,11 @@ public:
             }
             while(!s.empty() && nums[i]>s.top())
             {
-                second=s.top();
+                second = s.top();
                 s.pop();
             }
             s.push(nums[i]);
         }
-        return false;
+        return false; 
     }
 };
