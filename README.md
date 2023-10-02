@@ -1,4 +1,4 @@
-How to Commit a PR from your local device using git commands 
+How to Commit a PR from your local device using git commands  
 
 - Before using git commands you have to download the latest version of git on your device 
 - for that watch the video below , it will help you with installing git to making your first PR
